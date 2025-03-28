@@ -32,8 +32,8 @@ The CSV file should contain the following columns:
 Mapping of terms can follow this structure
 vocab.owner.name = codemeta.author.name
 In these cases, you will need to include the parent term, excluding the reference to the semantic artifact, as it is already included in the YAML file. Hierarchy will be delimited by the character '/'. For example: <br>
-| source_term | target_term |
-| ----------- | ----------- |
+| source_term | target_term |<br>
+| ----------- | ----------- |<br>
 | owner/name  | author/name |
 
 **Note: This is a strategy NOT supported in SSSOM. **
