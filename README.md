@@ -24,7 +24,19 @@ The CSV file should contain the following columns:
     - more_specific_than: The target vocabulary term is more specific than the target codemeta term. For example, "codemeta:identifier narrowerMatch hal_id" means that the hal id is a more concrete term than the "identifier" property in CodeMeta. 
     - more_generic_than:  The target vocabulary term is more generic than target codemeta term. For example, "codemeta:developmentStatus broaderMatch status" means that the status is a more generic term than the "developmentStatus" property in CodeMeta.
     - close_match: The subject and the object are sufficiently similar that they can be used interchangeably in some information retrieval applications. We do NOT recommend using this.
-- combined_mapping: It applies to a part-of relationship. This column defines the formula used to combine terms between schemes.  For example, if the source vocabulary has the term date, and the target vocabulary has the terms year and month, the CSV should contain two separate lines. This column will contain the formula date: $(year) + $(month)
+- combined_mapping: It applies to a part-of relationship. This column defines the formula used to combine terms between schemes.  For example, if the source vocabulary has the term date, and the target vocabulary has the terms year and month, the CSV should contain two separate lines. This column will contain the formula date: $(year) + $(month). ** This is a strategy NOT supported in SSSOM. **
+
+**Considerations**
+
+1. Hierarchical structures.
+Mapping of terms can follow this structure
+vocab.owner.name = codemeta.author.name
+In these cases, you will need to include the parent term, excluding the reference to the semantic artifact, as it is already included in the YAML file. Hierarchy will be delimited by the character '/'. For example:
+| source_term | target_term |
+| ----------- | ----------- |
+| owner/name  | author/name |
+
+**Note: This is a strategy NOT supported in SSSOM. **
 
 5. **Generate the SSSOM File**<br>
 Execute the script (generate_crosswalk.py) to generate an .sssom.tsv file from the CSV.
