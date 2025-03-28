@@ -16,11 +16,14 @@ Name the file appropriately, for example, codemeta-bibtext-mapping.yml.
 4. **Create the Data File (CSV Format)**<br>
 Name the CSV file appropriately, for example, codemeta-bibtext-mapping.csv.
 The CSV file should contain the following columns:
-source_term: The term in CodeMeta.
-target_term: The corresponding term in the target specification or vocabulary.
-type_relation: The type of relation between the two terms. Possible values:
-same_as: The terms are equivalent concepts.
-part_of: The target concept is part of the source concept (e.g., a publication year in the target vocabulary is part of a publication date in the source vocabulary).
+- source_term: The term in CodeMeta.
+- target_term: The corresponding term in the target specification or vocabulary.
+- type_relation: The type of relation between the two terms. Possible values:
+    - exact_match: The terms are equivalent concepts.
+    - part_of: The target concept is part of the source concept (e.g., a publication year in the target vocabulary is part of a publication date in the source vocabulary).
+    - more_specific_than: The target vocabulary term is more specific than the target codemeta term. For example, "codemeta:identifier narrowerMatch hal_id" means that the hal id is a more concrete term than the "identifier" property in CodeMeta. 
+    - more_generic_than:  The target vocabulary term is more generic than target codemeta term. For example, "codemeta:developmentStatus broaderMatch status" means that the status is a more generic term than the "developmentStatus" property in CodeMeta.
+    - close_match: The subject and the object are sufficiently similar that they can be used interchangeably in some information retrieval applications. We do NOT recommend using this.
 Important Note: Each line in the CSV file should represent only one relation between terms.
 For example, if the source vocabulary has the concept date, and the target vocabulary has year and month, the CSV should contain two separate lines:
 date -> year (with the part_of relation)
