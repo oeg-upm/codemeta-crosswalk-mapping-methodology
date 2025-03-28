@@ -3,7 +3,7 @@ This repository contains a script to create a crosswalk between Codemeta and ano
 
 The methodology for generating the files required to create the crosswalk is as follows:
 1. **Identify the Terms to Map**<br>
-Identify the terms you want to map in both semantic artifacts (source and target).
+Identify the terms you want to map in both semantic artifacts (source and target). Source applies to Codemeta while the target is another metadata schema.
 2. **Create a YAML Metadata File**<br>
 Create a YAML metadata file that contains the metadata of the mapping using the provided template: mapping-template.yml.
 Name the file appropriately, for example, codemeta-bibtext-mapping.yml.
@@ -24,10 +24,8 @@ The CSV file should contain the following columns:
     - more_specific_than: The target vocabulary term is more specific than the target codemeta term. For example, "codemeta:identifier narrowerMatch hal_id" means that the hal id is a more concrete term than the "identifier" property in CodeMeta. 
     - more_generic_than:  The target vocabulary term is more generic than target codemeta term. For example, "codemeta:developmentStatus broaderMatch status" means that the status is a more generic term than the "developmentStatus" property in CodeMeta.
     - close_match: The subject and the object are sufficiently similar that they can be used interchangeably in some information retrieval applications. We do NOT recommend using this.
-Important Note: Each line in the CSV file should represent only one relation between terms.
-For example, if the source vocabulary has the concept date, and the target vocabulary has year and month, the CSV should contain two separate lines:
-date -> year (with the part_of relation)
-date -> month (with the part_of relation)
+- combined_mapping: It applies to a part-of relationship. This column defines the formula used to combine terms between schemes.  For example, if the source vocabulary has the term date, and the target vocabulary has the terms year and month, the CSV should contain two separate lines. This column will contain the formula date: $(year) + $(month)
+
 5. **Generate the SSSOM File**<br>
 Execute the script (generate_crosswalk.py) to generate an .sssom.tsv file from the CSV.
 ```bash
