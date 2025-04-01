@@ -1,18 +1,18 @@
 source_term,target_term,type_relation
-codeRepository,repository,same_as
-softwareVersion,version,same_as
-downloadUrl,file,same_as
-softwareVersion,version,same_as
-releaseNotes,note,same_as
-author,author,same_as
-datePublished,date,same_as 
+codeRepository,repository,exact_match
+softwareVersion,version,exact_match
+downloadUrl,file,exact_match
+softwareVersion,version,exact_match
+releaseNotes,note,exact_match
+author,author,exact_match
+datePublished,date,exact_match 
 datePublished,year,part_of 
 datePublished,month,part_of
-editor,editor,same_as
-license, license,same_as
-publisher,publisher,same_as
-description,abstract,same_as
-identifier,doi,same_as
-identifier,hal_id,same_as
-url,url,same_as
-affiliation,organization,same_as
+editor,editor,exact_match
+license, license,exact_match
+publisher,publisher,exact_match
+description,abstract,exact_match
+identifier,doi,exact_match
+identifier,hal_id,exact_match
+url,url,exact_match
+affiliation,organization,exact_match
