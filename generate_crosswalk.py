@@ -22,12 +22,16 @@ def convert_csv_to_tsv(input_metadata_file, input_file, output_file):
 
     writer.writerow(header)
     
-    next(reader, None)
     #Write each row from CSV to TSV
     for row in reader:
-        predicate_id = "skos:exactMatch"
-        if row["type_relation"]=="part_of":
+        if (row["type_relation"]=="exact_match"):
+            predicate_id = "skos:exactMatch"
+        elif (row["type_relation"]=="part_of"):
             predicate_id = "skos:closeMatch"
+        elif (row["type_relation"]=="more_specific_than"):
+            predicate_id = "skos:narrower"
+        elif (row["type_relation"]=="more_generic_than"):
+            predicate_id = "skos:broader"
         row = ["schema:"+row["source_term"],row["source_term"],predicate_id,"target:"+row["target_term"],row["target_term"],"SSSOM:HumanCurated","schema","target",1]
         writer.writerow(row)
     
