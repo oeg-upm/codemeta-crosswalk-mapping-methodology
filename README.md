@@ -1,4 +1,7 @@
 # mapping-methodology
+
+## Note: this repository is being merged in CodeMeta, in this branch: https://github.com/codemeta/codemeta/tree/sssom-methodology/crosswalks-sssom. Please contribute there
+
 This repository contains a script to create a crosswalk between Codemeta and another specification or vocabulary, as well as some examples of generation.
 
 The methodology for generating the files required to create the crosswalk is as follows:
